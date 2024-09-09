@@ -1,5 +1,6 @@
 <script setup lang="ts">
 // import { ref } from 'vue'
+import FooterComp from './components/FooterComp.vue'
 import HeaderComp from './components/HeaderComp.vue'
 
 // const monTableau = ref([
@@ -32,6 +33,9 @@ import HeaderComp from './components/HeaderComp.vue'
 
   <!-- <button @click="ajouterElement">Ajouter une valeur</button> -->
   <!-- {{ monTableau }} -->
+  <footer>
+    <FooterComp />
+  </footer>
 </template>
 
 <style scoped></style>
