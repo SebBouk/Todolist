@@ -1,20 +1,23 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
-const monTableau = ref([
-  { todo: 'apprendre Vue Js', done: false },
-  { todo: 'apprendre à faire des boucles', done: false },
-  { todo: 'apprendre à griller des saucisses', done: true }
-])
+const props = defineProps<{
+  todo: { done: boolean; todo: string }
+}>()
+const emit = defineEmits(['onInput'])
+const onInput = (value: boolean) => {
+  console.log('TodoComponent a détecté un changement', value)
+  emit('onInput', { ...props.todo, done: value })
+}
 </script>
+
 <template>
-  <div>
-    <span v-if="monTableau.length % 2 === 0">Mon tableau est pair</span>
-    <span v-else>Mon tableau est impaire</span>
-    <span v-for="element in monTableau" :key="element.todo">
-      mon élément est {{ element.todo }}
-      <input type="checkbox" :checked="element.done" />
-      <br />
-    </span>
-  </div>
+  <span>
+    <!-- <span v-for="element in monTableau" :key="element.todo"> -->
+    {{ props.todo.todo }}
+    <input
+      type="checkbox"
+      :checked="props.todo.done"
+      @click="(event: any) => onInput(event.target?.checked)"
+    />
+    <br />
+  </span>
 </template>

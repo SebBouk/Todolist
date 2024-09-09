@@ -1,7 +1,8 @@
 <script setup lang="ts">
-// import { ref } from 'vue'
+import { ref } from 'vue'
 import FooterComp from './components/FooterComp.vue'
 import HeaderComp from './components/HeaderComp.vue'
+import FooterView from './views/FooterView.vue'
 
 // const monTableau = ref([
 //   { todo: 'apprendre Vue Js', done: false },
@@ -34,7 +35,7 @@ import HeaderComp from './components/HeaderComp.vue'
   <!-- <button @click="ajouterElement">Ajouter une valeur</button> -->
   <!-- {{ monTableau }} -->
   <footer>
-    <FooterComp />
+    <FooterView />
   </footer>
 </template>
 
