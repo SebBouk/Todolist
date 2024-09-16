@@ -3,7 +3,7 @@ import { ref } from 'vue';
 const props = defineProps<{
   todo: { done: boolean; todo: string };
 }>();
-const emit = defineEmits(['onInput']);
+const emit = defineEmits(['onInput', 'onDelete']);
 const onInput = (value: boolean) => {
   console.log('TodoComponent a détecté un changement', value);
   emit('onInput', { ...props.todo, done: value });
@@ -24,6 +24,8 @@ const newValue = ref(props.todo.todo);
       :checked="props.todo.done"
       @click="(event: any) => onInput(event.target?.checked)"
     />
+    <br />
+    <button type="button" @click="$emit('onDelete')">Supprimer</button>
     <br />
   </div>
   <span v-if="editMode">

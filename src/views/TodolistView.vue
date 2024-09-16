@@ -19,6 +19,10 @@ const addTodo = () => {
     newTodo.value = '';
   }
 };
+
+const onDelete = (index: number) => {
+  monTableau.value.splice(index, 1);
+};
 </script>
 
 <template>
@@ -28,6 +32,7 @@ const addTodo = () => {
       :todo="element"
       v-bind:key="index"
       @onInput="onTodoInput($event, index)"
+      @onDelete="() => onDelete(index)"
     />
     <span>
       <input v-model="newTodo" placeholder="Ajouter une nouvelle tâche" />
