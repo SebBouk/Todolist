@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+
 const props = defineProps<{
   todo: { done: boolean; todo: string };
 }>();
+
 const emit = defineEmits(['onInput', 'onDelete']);
+
 const onInput = (value: boolean) => {
   console.log('TodoComponent a détecté un changement', value);
   emit('onInput', { ...props.todo, done: value });
@@ -11,6 +14,16 @@ const onInput = (value: boolean) => {
 const editMode = ref(false);
 
 const newValue = ref(props.todo.todo);
+
+const saveChanges = () => {
+  emit('onInput', { ...props.todo, todo: newValue.value });
+  editMode.value = false;
+};
+
+const cancelEdit = () => {
+  newValue.value = props.todo.todo; // Remet la valeur originale
+  editMode.value = false;
+};
 </script>
 
 <template>
@@ -28,7 +41,10 @@ const newValue = ref(props.todo.todo);
   </div>
   <span v-if="editMode">
     <input type="text" v-model="newValue" />
-    <button
+    <button type="button" @click="saveChanges">✔</button>
+    <button type="button" @click="cancelEdit">X</button>
+  </span>
+  <!-- <button
       type="button"
       @click="
         props.todo.todo = newValue;
@@ -48,5 +64,5 @@ const newValue = ref(props.todo.todo);
     >
       X
     </button>
-  </span>
+  </span> -->
 </template>
