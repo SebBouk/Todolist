@@ -9,6 +9,8 @@ const onInput = (value: boolean) => {
   emit('onInput', { ...props.todo, done: value });
 };
 const editMode = ref(false);
+
+const newValue = ref(props.todo.todo);
 </script>
 
 <template>
@@ -24,8 +26,27 @@ const editMode = ref(false);
     />
     <br />
   </div>
-  <span v-else>
-    <input type="text" :value="props.todo.todo" />
-    <button type="button" @click="editMode = !editMode">X</button>
+  <span v-if="editMode">
+    <input type="text" v-model="newValue" />
+    <button
+      type="button"
+      @click="
+        props.todo.todo = newValue;
+        editMode = !editMode;
+      "
+    >
+      ✔
+    </button>
+  </span>
+  <span v-if="editMode">
+    <button
+      type="button"
+      @click="
+        editMode = !editMode;
+        newValue = props.todo.todo;
+      "
+    >
+      X
+    </button>
   </span>
 </template>
