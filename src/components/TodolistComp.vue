@@ -23,9 +23,7 @@ const newValue = ref(props.todo.todo);
       type="checkbox"
       :checked="props.todo.done"
       @click="(event: any) => onInput(event.target?.checked)"
-    />
-    <br />
-    <button type="button" @click="$emit('onDelete')">Supprimer</button>
+    /><button type="button" @click="$emit('onDelete')">Supprimer</button>
     <br />
   </div>
   <span v-if="editMode">
