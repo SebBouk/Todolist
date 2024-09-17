@@ -21,7 +21,7 @@ const saveChanges = () => {
 };
 
 const cancelEdit = () => {
-  newValue.value = props.todo.todo; // Remet la valeur originale
+  newValue.value = props.todo.todo;
   editMode.value = false;
 };
 </script>
@@ -43,6 +43,7 @@ const cancelEdit = () => {
     <input type="text" v-model="newValue" />
     <button type="button" @click="saveChanges">✔</button>
     <button type="button" @click="cancelEdit">X</button>
+    <br />
   </span>
   <!-- <button
       type="button"

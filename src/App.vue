@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import FooterComp from './components/FooterComp.vue'
-import HeaderComp from './components/HeaderComp.vue'
-import FooterView from './views/FooterView.vue'
+import { ref } from 'vue';
+import FooterComp from './components/FooterComp.vue';
+import HeaderComp from './components/HeaderComp.vue';
+import FooterView from './views/FooterView.vue';
 
 // const monTableau = ref([
 //   { todo: 'apprendre Vue Js', done: false },
